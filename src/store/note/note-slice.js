@@ -8,10 +8,13 @@ export const noteSlice = createSlice({
     reducers : {
         setNoteList : (currentSlice, action) =>{
             currentSlice.noteList = action.payload;
+        },
+        addNote : (currentSlice, action) =>{
+            currentSlice.noteList.push(action.payload);
         }
     }
 });
 
-const { setNoteList } = noteSlice.actions;
+const { setNoteList, addNote } = noteSlice.actions;
 
-export { setNoteList };
+export { setNoteList, addNote };

@@ -17,7 +17,7 @@ export const NoteList = () => {
                             date={note.created_at}
                             content={note.content}
                             onClick={() => {navigate(`/note/${note.id}`)}}
-                            onClickTrash={() => {}}
+                            onClickTrash={() => {alert('suppression')}}
                         />
                     </div>
                 )

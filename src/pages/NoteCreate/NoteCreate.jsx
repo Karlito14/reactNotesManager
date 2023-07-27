@@ -1,7 +1,8 @@
+import { NoteForm } from 'components/NoteForm/NoteForm';
 import style from './style.module.css';
 
 export const NoteCreate = () => {
     return (
-        <p>Note Create</p>
+        <NoteForm title={'Create a note'} />
     )
 };

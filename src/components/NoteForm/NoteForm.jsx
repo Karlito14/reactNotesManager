@@ -14,11 +14,11 @@ const VALIDATORS = {
     },
 }
 
-export const NoteForm = ({ isEditable = true, title, onClickEdit, onClickTrash, onSubmit, note }) => {
+export const NoteForm = ({ isEditable = true , title, onClickEdit, onClickTrash, onSubmit, note }) => {
 
-    const [formValues, setFormValues] = useState({title : '', content : ''});
+    const [formValues, setFormValues] = useState({title : note?.title, content : note?.content});
 
-    const [formErrors, setFormErrors] = useState({title : "", content : ""});
+    const [formErrors, setFormErrors] = useState({title : note?.title ? undefined : "", content : note?.content ? undefined : ""});
 
     const hasError = () => {
         return Object.values(formErrors).some(error => error !== undefined)
@@ -53,7 +53,8 @@ export const NoteForm = ({ isEditable = true, title, onClickEdit, onClickTrash, 
                 id='title' 
                 type='text' 
                 name='title' 
-                className='form-control'  
+                className='form-control' 
+                value={formValues.title}
             />
             {formErrors.title && <FieldError message={formErrors.title} />}
         </div>
@@ -68,7 +69,8 @@ export const NoteForm = ({ isEditable = true, title, onClickEdit, onClickTrash, 
                 type='text' 
                 name='content' 
                 className='form-control' 
-                rows='5'  
+                rows='5'
+                value={formValues.content}  
             >
             </textarea>
             {formErrors.content && <FieldError message={formErrors.content} />}
@@ -93,7 +95,7 @@ export const NoteForm = ({ isEditable = true, title, onClickEdit, onClickTrash, 
                 {actionIcons}
             </div>
             <div className={`mb-3 ${style.title_input}`}>{isEditable && titleInput}</div>
-            <div className='mb-3'>{isEditable ? contentInput : <pre>{note.content}</pre>}</div>
+            <div className='mb-3'>{isEditable ? contentInput : <pre className={style.pre_content}>{note.content}</pre>}</div>
             {onSubmit && submitButton}
         </form>
     )

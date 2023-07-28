@@ -15,3 +15,7 @@
 .div_button{
     text-align: right;
 }
+
+.pre_content{
+    white-space: pre-wrap;
+}

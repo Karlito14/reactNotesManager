@@ -11,10 +11,14 @@ export const noteSlice = createSlice({
         },
         addNote : (currentSlice, action) =>{
             currentSlice.noteList.push(action.payload);
+        },
+        updateNote : (currentSlice, action) => {
+            const index = currentSlice.noteList.findIndex(note => note.id === action.payload.id);
+            currentSlice.noteList.splice(index, 1, action.payload);
         }
     }
 });
 
-const { setNoteList, addNote } = noteSlice.actions;
+const { setNoteList, addNote, updateNote } = noteSlice.actions;
 
-export { setNoteList, addNote };
+export { setNoteList, addNote, updateNote };

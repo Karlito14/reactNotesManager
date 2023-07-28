@@ -14,7 +14,7 @@ const VALIDATORS = {
     },
 }
 
-export const NoteForm = ({ title, onClickEdit, onClickTrash, onSubmit }) => {
+export const NoteForm = ({ isEditable = true, title, onClickEdit, onClickTrash, onSubmit, note }) => {
 
     const [formValues, setFormValues] = useState({title : '', content : ''});
 
@@ -92,8 +92,8 @@ export const NoteForm = ({ title, onClickEdit, onClickTrash, onSubmit }) => {
                 <h2 className='col-10'>{title}</h2>
                 {actionIcons}
             </div>
-            <div className={`mb-3 ${style.title_input}`}>{titleInput}</div>
-            <div className='mb-3'>{contentInput}</div>
+            <div className={`mb-3 ${style.title_input}`}>{isEditable && titleInput}</div>
+            <div className='mb-3'>{isEditable ? contentInput : <pre>{note.content}</pre>}</div>
             {onSubmit && submitButton}
         </form>
     )

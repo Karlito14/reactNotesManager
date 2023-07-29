@@ -16,7 +16,7 @@ const VALIDATORS = {
 
 export const NoteForm = ({ isEditable = true , title, onClickEdit, onClickTrash, onSubmit, note }) => {
 
-    const [formValues, setFormValues] = useState({title : note?.title, content : note?.content});
+    const [formValues, setFormValues] = useState({title : note?.title || '', content : note?.content || ''});
 
     const [formErrors, setFormErrors] = useState({title : note?.title ? undefined : "", content : note?.content ? undefined : ""});
 
@@ -29,7 +29,7 @@ export const NoteForm = ({ isEditable = true , title, onClickEdit, onClickTrash,
     }
 
     const updateFormValues = (event) => {
-        const value = event.target.value.trim();
+        const value = event.target.value;
         setFormValues({...formValues, [event.target.name]: value});
         validateForm(event.target.name, value);
     };

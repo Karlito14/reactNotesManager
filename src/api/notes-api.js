@@ -18,8 +18,7 @@ export class NotesAPI {
     };
 
     static async deleteByID (id) {
-        const note = await axios.delete(`${BASE_URL}/${id}`);
-        return note.data;
+        return (await axios.delete(`${BASE_URL}/${id}`)).data;
     };
 
     static async update (note) {

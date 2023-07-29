@@ -9,8 +9,10 @@ export const NoteCreate = () => {
     const navigate = useNavigate();
 
     const newNote = async (formValues) => {
+        console.log(formValues.title.trim())
         const createdNote = await NotesAPI.create({
-            ...formValues, 
+            title : formValues.title.trim(),
+            content : formValues.content.trim(), 
             created_at : new Date().toLocaleDateString()
         });
         
